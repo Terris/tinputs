@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Loader } from 'semantic-ui-react';
+import React from 'react';
+import Tinput from './tinput'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Loader active />
-      </div>
-    );
-  }
+import "../css/app.css";
+
+const App = () => {
+  return (
+    <div>
+      <Tinput />
+    </div>
+  );
 }
 
 export default App;
