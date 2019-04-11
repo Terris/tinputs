@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { Responsive, Input } from 'semantic-ui-react';
-import { db } from '../../firebase';
 
 import '../../css/tinput.css'
 
@@ -9,11 +7,9 @@ class Tinput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tinputs: {},
       tinput: "",
       error: null,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = event => {
@@ -22,23 +18,14 @@ class Tinput extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({ error: null });
-    db.createTinputRecord(this.state.tinput)
-    .then((response) => {
-      console.log(response);
-      let updatedTinputs = { ...this.state.tinputs, [response.key]: this.state.tinput }
-      this.setState({ tinputs: updatedTinputs, tinput: ""});
-    })
-    .catch(error => this.setState({error: error}))
+    this.props.onSubmitTinput(this.state.tinput);
+    this.setState({ tinput: "" });
   }
 
   render() {
-    const { tinput, tinputs } = this.state;
+    const { tinput } = this.state;
     return (
       <div className="tinput">
-        {tinputs && _.map(tinputs, (t, key) => {
-          return (<p key={key}>{t}</p>)
-        })}
         <form onSubmit={this.handleSubmit}>
           <Responsive maxWidth={767}>
             <Input

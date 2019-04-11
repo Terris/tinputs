@@ -1,5 +1,9 @@
 import { db } from './firebase';
 
-export const createTinputRecord = (tinput) => {
-  return db.ref().child('tinputs').push({ tinput: tinput });
-}
+// -- tinputs api --
+
+// export const createTinputRecord = (tinput, uid) =>
+//  db.ref().child('tinputs').push({ tinput: tinput, uid: uid });
+
+export const tinputs = () =>
+  db.ref('tinputs');

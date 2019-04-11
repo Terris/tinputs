@@ -1,14 +1,12 @@
 import React from 'react';
-import Tinput from './tinput'
+import withAuthentication from './session/withAuthentication';
+
+import Shell from './shell';
 
 import "../css/app.css";
 
-const App = () => {
-  return (
-    <div>
-      <Tinput />
-    </div>
-  );
+const App = ({ authUser }) => {
+  return <Shell authUser={authUser} />
 }
 
-export default App;
+export default withAuthentication(App);
