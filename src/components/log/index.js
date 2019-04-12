@@ -1,17 +1,15 @@
 import React from 'react';
-
+import Reply from '../reply';
 import "../../css/log.css";
 
 const Log = ({ tinputs }) => {
   return (
     <div className="log">
-      <h3>:</h3>
       {!!tinputs && Object.keys(tinputs).map(key => {
         return (
-          <p key={key}>{tinputs[key].command}</p>
+          <Reply key={key} command={tinputs[key].command} />
         )
       })}
-
     </div>
   )
 }

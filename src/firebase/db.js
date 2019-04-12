@@ -7,3 +7,6 @@ import { db } from './firebase';
 
 export const tinputs = () =>
   db.ref('tinputs');
+
+export const getReply = ( command ) =>
+  db.ref('commands/' + command + '/reply').once('value')

@@ -30,10 +30,11 @@ class Tinput extends Component {
           <Responsive maxWidth={767}>
             <Input
               autoComplete="off"
+              autoFocus
               name="tinput"
               size='small'
               fluid
-              icon='terminal'
+              icon='angle right'
               iconPosition='left'
               placeholder='Type "help" for a list of commands'
               value={tinput}
@@ -43,10 +44,11 @@ class Tinput extends Component {
           <Responsive minWidth={768}>
             <Input
               autoComplete="off"
+              autoFocus
               name="tinput"
               size='massive'
               fluid
-              icon='terminal'
+              icon='angle right'
               iconPosition='left'
               placeholder='Type "help" for a list of commands'
               value={tinput}

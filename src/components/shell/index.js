@@ -18,6 +18,11 @@ class Shell extends Component {
 
   componentDidMount() {
     this.onListenForTinputs();
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   onListenForTinputs = () => {
@@ -33,6 +38,10 @@ class Shell extends Component {
     db.messages().off();
   }
 
+  scrollToBottom = () => {
+    this.logEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
   handleSubmit = (tinput) => {
     db.tinputs().push({
       command: tinput,
@@ -45,6 +54,7 @@ class Shell extends Component {
       <div>
         <Log tinputs={this.state.tinputs} />
         <Tinput onSubmitTinput={this.handleSubmit} />
+        <div className="logend" ref={(el) => { this.logEnd = el; }}></div>
       </div>
     )
   }
