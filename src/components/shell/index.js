@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { db } from '../../firebase';
 import withAuthorization from '../session/withAuthorization';
-
+import { hocus } from '../../hocus';
 import Log from '../log';
 import Tinput from '../tinput';
+import { Loader } from 'semantic-ui-react';
 
 class Shell extends Component {
   constructor(props) {
@@ -11,8 +12,8 @@ class Shell extends Component {
     this.state = {
       tinputs: [],
       error: null,
-      limit: 10,
-      loading: false
+      limit: 5,
+      loading: false,
     };
   }
 
@@ -35,7 +36,7 @@ class Shell extends Component {
   };
 
   componentWillUnmount() {
-    db.messages().off();
+    db.tinputs().off();
   }
 
   scrollToBottom = () => {
@@ -43,15 +44,14 @@ class Shell extends Component {
   }
 
   handleSubmit = (tinput) => {
-    db.tinputs().push({
-      command: tinput,
-      user_id: this.props.authUser.uid
-    });
+    hocus.pocus(tinput, this.props.authUser.uid);
   }
 
   render() {
+    const { loading } = this.state;
     return (
       <div>
+        {loading && <Loader active />}
         <Log tinputs={this.state.tinputs} />
         <Tinput onSubmitTinput={this.handleSubmit} />
         <div className="logend" ref={(el) => { this.logEnd = el; }}></div>

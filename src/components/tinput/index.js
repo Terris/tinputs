@@ -18,8 +18,10 @@ class Tinput extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmitTinput(this.state.tinput);
-    this.setState({ tinput: "" });
+    if ( !!this.state.tinput) {
+      this.props.onSubmitTinput(this.state.tinput);
+      this.setState({ tinput: "" });
+    }
   }
 
   render() {
@@ -30,6 +32,7 @@ class Tinput extends Component {
           <Responsive maxWidth={767}>
             <Input
               autoComplete="off"
+              spellCheck="false"
               autoFocus
               name="tinput"
               size='small'
@@ -44,6 +47,7 @@ class Tinput extends Component {
           <Responsive minWidth={768}>
             <Input
               autoComplete="off"
+              spellCheck="false"
               autoFocus
               name="tinput"
               size='massive'

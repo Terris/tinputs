@@ -31,7 +31,7 @@ class Reply extends Component {
       <Card fluid>
         <Card.Content header={command} />
         <Card.Content
-          description={reply}
+          description={reply ? reply : "That doesn't do anything."}
         />
       </Card>
     )

@@ -11,3 +11,6 @@ export const signInAnonymously = () =>
 
 export const signOut = () =>
   auth.signOut()
+
+export const currentUser = () =>
+  auth.currentUser;
