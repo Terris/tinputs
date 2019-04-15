@@ -1,11 +1,6 @@
 import { db } from '../firebase';
 import { cadabra } from './cadabra';
 
-const cast = (command, uid) => {
-  console.log(command.join(" "));
-  db.tinputs().push({ command: command.join(" "), user_id: uid })
-}
-
 const pocus = (tinput, uid) => {
 
   const command = tinput.toLowerCase().split(" ");
@@ -22,6 +17,10 @@ const pocus = (tinput, uid) => {
         cast(command, uid)
     }
   }
+}
+
+const cast = (command, uid) => {
+  db.tinputs().push({ command: command.join(" "), user_id: uid })
 }
 
 export {

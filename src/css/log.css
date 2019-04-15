@@ -1,1 +1,5 @@
-.log { margin-bottom: 130px; }
+.log { margin-bottom: 160px; }
+
+@media screen and (min-width: 768px) {
+  .log { max-width: 66%; margin: 0 auto 160px auto; }
+}

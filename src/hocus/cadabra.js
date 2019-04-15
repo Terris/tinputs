@@ -15,7 +15,7 @@ const cadabra = (command, uid) => {
       break;
     case "user":
       cadabraUser();
-      break;
+      break;  
     default:
       cast(safeword, uid);
   }
