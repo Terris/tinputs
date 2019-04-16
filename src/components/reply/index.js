@@ -21,9 +21,8 @@ class Reply extends Component {
     const command = this.props.command.split(" ").join("/");
     db.getReply(command)
       .then(snapshot => {
-        this.setState({
-          reply: snapshot.val(),
-        })
+        this.setState({reply: snapshot.val()})
+
       })
       .catch(error => {
         this.setState({ error: error });

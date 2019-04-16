@@ -6,6 +6,8 @@ import Log from '../log';
 import Tinput from '../tinput';
 import { Loader } from 'semantic-ui-react';
 
+import '../../css/shell.css';
+
 class Shell extends Component {
   constructor(props) {
     super(props);
